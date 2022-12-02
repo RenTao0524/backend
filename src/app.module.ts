@@ -6,6 +6,7 @@ import { OrderController } from './order/order.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { User } from './users/user.entity';
+import { DataSource } from 'typeorm';
 
 @Module({
   imports: [
@@ -25,4 +26,6 @@ import { User } from './users/user.entity';
   controllers: [AppController, UserInfoController, OrderController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private dataSource: DataSource) {}
+}
